@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Classroom Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0f1e;
+            color: white;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glow {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .floating-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col relative overflow-x-hidden floating-bg">
+
+    <!-- Nav -->
+    <nav class="glass w-full px-8 py-4 flex justify-between items-center z-50 sticky top-0 border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl shadow-lg shadow-indigo-500/20">🎓</div>
+            <span class="font-black text-2xl tracking-tighter italic">Focus<span class="text-indigo-400">AI</span></span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hidden md:inline">Precision Monitoring v2.4</span>
+            <div class="h-8 w-[1px] bg-white/10 hidden md:block"></div>
+            <a href="https://github.com" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <main class="flex-1 flex flex-col items-center justify-center px-6 py-16 relative z-10 w-full max-w-7xl mx-auto">
+        <div class="relative w-full text-center fade-up mb-20">
+            <!-- Decorative Orbs -->
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-600/10 blur-[120px] rounded-full -z-10"></div>
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-300 text-[10px] font-black uppercase tracking-[0.2em] mb-8 animate-pulse">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                Next-Gen Classroom Intelligence
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+                The Future of<br>
+                <span class="gradient-text">Remote Learning</span>
+            </h1>
+            
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+                Empower educators with real-time biometric insights. Detect drowsiness, 
+                distraction, and presence with surgical precision using advanced WebRTC & DL.
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid lg:grid-cols-2 gap-8 w-full max-w-5xl fade-up">
+
+            <!-- Create Class Card -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500"></div>
+                <div class="glass relative rounded-[2.5rem] p-10 glow transition-all duration-500 border-white/5 hover:border-indigo-500/40 flex flex-col h-full overflow-hidden">
+                    <!-- Background Pattern -->
+                    <div class="absolute top-0 right-0 p-8 text-white/5 group-hover:text-indigo-500/10 transition-colors duration-500 scale-[3]">
+                        <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M13 3c0-1.1-.9-2-2-2S9 1.9 9 3s.9 2 2 2 2-.9 2-2zm2 0c0-1.1-.9-2-2-2S11 1.9 11 3s.9 2 2 2 2-.9 2-2zM7 3c0-1.1-.9-2-2-2S3 1.9 3 3s.9 2 2 2 2-.9 2-2zm14 0c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2z"/></svg>
+                    </div>
+
+                    <div class="w-16 h-16 rounded-3xl bg-indigo-500/10 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🎓</div>
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-black mb-4 tracking-tight">Instructor Panel</h2>
+                        <p class="text-gray-400 text-base mb-8 font-medium">Establish a secure virtual environment. Monitor engagement metrics and broadcast live with sub-second latency.</p>
+                    </div>
+                    
+                    <button id="btn-create" class="btn-primary w-full py-5 rounded-2xl font-black text-white text-sm uppercase tracking-widest shadow-2xl shadow-indigo-600/30">
+                        Create Workspace
+                    </button>
+                    <p id="create-status" class="text-xs text-center mt-4 text-gray-500 font-bold h-4 italic"></p>
+                </div>
+            </div>
+
+            <!-- Join Class Card -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-600 to-indigo-700 opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500"></div>
+                <div class="glass relative rounded-[2.5rem] p-10 transition-all duration-500 border-white/5 hover:border-cyan-500/40 flex flex-col h-full overflow-hidden">
+                    <div class="w-16 h-16 rounded-3xl bg-cyan-500/10 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">📡</div>
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-black mb-4 tracking-tight">Student Portal</h2>
+                        <p class="text-gray-400 text-base mb-8 font-medium">Connect to your active classroom. Secure, browser-based monitoring with no software installation required.</p>
+                    </div>
+
+                    <div class="relative mb-4">
+                        <input id="join-id" type="text" placeholder="Session Key"
+                            class="w-full px-6 py-5 bg-black/40 border border-white/5 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono tracking-[0.3em] font-black uppercase text-center placeholder:text-gray-700">
+                    </div>
+                    
+                    <button id="btn-join"
+                        class="w-full py-5 rounded-2xl font-black border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all text-sm uppercase tracking-widest">
+                        Join Session
+                    </button>
+                    <p id="join-error" class="text-xs text-red-500/80 font-bold text-center mt-4 hidden h-4">Authentication Error: Invalid Session Key</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Grid -->
+        <div class="w-full max-w-5xl mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 px-4 fade-up">
+            <div class="glass p-6 rounded-3xl border-white/5 text-center flex flex-col items-center gap-3">
+                <div class="text-2xl">🧠</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Deep Learning</p>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5 text-center flex flex-col items-center gap-3">
+                <div class="text-2xl">⚡</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Zero Latency</p>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5 text-center flex flex-col items-center gap-3">
+                <div class="text-2xl">🛡️</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Secure P2P</p>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5 text-center flex flex-col items-center gap-3">
+                <div class="text-2xl">📊</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Smart Reports</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('btn-create').addEventListener('click', async () => {
+            const btn = document.getElementById('btn-create');
+            const status = document.getElementById('create-status');
+            btn.disabled = true;
+            btn.innerText = 'Creating...';
+            try {
+                const res = await fetch('/create_class', { method: 'POST' });
+                const data = await res.json();
+                status.innerText = `Class ID: ${data.class_id}`;
+                status.className = 'text-xs text-center mt-3 text-indigo-400 font-mono font-bold';
+                setTimeout(() => { window.location.href = `/teacher?class_id=${data.class_id}`; }, 500);
+            } catch (e) {
+                status.innerText = 'Server error — is main.py running?';
+                status.className = 'text-xs text-center mt-3 text-red-400';
+                btn.disabled = false;
+                btn.innerText = '＋ Create New Class';
+            }
+        });
+
+        document.getElementById('btn-join').addEventListener('click', () => {
+            const id = document.getElementById('join-id').value.trim();
+            if (!id) { document.getElementById('join-error').classList.remove('hidden'); return; }
+            window.location.href = `/student?class_id=${id}`;
+        });
+
+        document.getElementById('join-id').addEventListener('keydown', e => {
+            if (e.key === 'Enter') document.getElementById('btn-join').click();
+        });
+    </script>
+</body>
+
+</html>

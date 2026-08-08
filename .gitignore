@@ -1,0 +1,66 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual Environments ──────────────────────────────────────────────────
+venv/
+venv38/
+venv_opt/
+env/
+.env
+.venv/
+
+# ── Database (runtime-generated, not version-controlled) ──────────────────
+classroom.db
+*.db
+*.sqlite3
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+*.log
+*.out
+*.err
+tunnel*.log
+tunnel*.out
+tunnel*.err
+server*.log
+lt*.log
+lt*.out
+lt*.err
+cf_*.log
+cf_*.out
+tunnel_*.log
+
+# ── Sensitive / Secret files ──────────────────────────────────────────────
+*.pem
+cert.pem
+key.pem
+public_url.txt
+tunnel_url.txt
+url.txt
+lt_url*.txt
+
+# ── Large binary / model files (use Git LFS or download script instead) ───
+# Dlib landmark model — 99 MB, too large for GitHub
+shape_predictor_68_face_landmarks.dat
+shape_predictor_68_face_landmarks.dat.bz2
+
+# Cloudflared binary — 65 MB
+cloudflared.exe
+
+# ── OS / IDE ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Misc build artefacts ──────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+.pytest_cache/
