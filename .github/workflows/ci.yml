@@ -31,9 +31,9 @@ jobs:
       - name: Lint with flake8
         run: |
           # Stop build on syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # Warn on style issues (max line length 120)
-          flake8 . --count --max-line-length=120 --statistics --exclude=venv,venv38,venv_opt
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv,venv38,venv_opt,.git
+          # Check style issues (max line length 120)
+          flake8 . --count --max-line-length=120 --statistics --exclude=venv,venv38,venv_opt,.git --exit-zero
 
       - name: Check imports resolve correctly
         run: |

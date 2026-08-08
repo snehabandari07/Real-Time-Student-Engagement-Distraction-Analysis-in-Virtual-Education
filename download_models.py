@@ -13,7 +13,6 @@ Run once before starting the server:
     python download_models.py
 """
 
-import os
 import urllib.request
 import pathlib
 

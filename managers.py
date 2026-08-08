@@ -1,9 +1,7 @@
 from typing import List, Dict, Any
 from fastapi import WebSocket
-import json
 import asyncio
 from database import SessionLocal, ClassSession, StudentSession, AttentionLog
-from datetime import datetime
 
 
 class ConnectionManager:
@@ -68,9 +66,11 @@ class ConnectionManager:
         db = self._db()
         try:
             if not db.query(ClassSession).filter_by(id=class_id).first():
-                db.add(ClassSession(id=class_id)); db.commit()
+                db.add(ClassSession(id=class_id))
+                db.commit()
             st = StudentSession(student_id=student_id, session_id=class_id, name=name)
-            db.add(st); db.commit()
+            db.add(st)
+            db.commit()
             self.student_statuses[class_id][student_id]["db_id"] = st.id
         except Exception as e:
             print(f"[DB] admit error: {e}")
@@ -90,7 +90,8 @@ class ConnectionManager:
             if sid != student_id:
                 try:
                     await sw.send_json({"type": "student_joined", "student_id": student_id, "name": name})
-                except: pass
+                except Exception:
+                    pass
 
         # Unblock waiting coroutine
         evt = self.admission_events.get(class_id, {}).pop(student_id, None)
@@ -143,7 +144,8 @@ class ConnectionManager:
         db = self._db()
         try:
             if not db.query(ClassSession).filter_by(id=class_id).first():
-                db.add(ClassSession(id=class_id)); db.commit()
+                db.add(ClassSession(id=class_id))
+                db.commit()
         except Exception as e:
             print(f"[DB] teacher connect: {e}")
         finally:
@@ -266,9 +268,9 @@ class ConnectionManager:
         for sid in self.active_connections.get(class_id, {}):
             name = self.student_statuses.get(class_id, {}).get(sid, {}).get("name", "Student")
             participants.append({"id": sid, "name": name})
-        
+
         msg = {
-            "type": "participant_count", 
+            "type": "participant_count",
             "count": count,
             "participants": participants
         }

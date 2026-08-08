@@ -4,7 +4,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
-import uuid, socket, asyncio, json, csv, io, pathlib
+import uuid
+import socket
+import asyncio
+import json
+import csv
+import io
+import pathlib
 import uvicorn
 
 from database import init_db, SessionLocal, AttentionLog, StudentSession
@@ -153,7 +159,6 @@ async def get_report_html(class_id: str):
         point_colors = _json.dumps([STATUS_COLORS.get(s, "#6b7280") for s in states])
 
         # Stacked bar: group per minute bucket
-        from collections import Counter
         minute_buckets = defaultdict(list)
         for t, s in zip(d["times"], states):
             bucket = t[:5]  # HH:MM
